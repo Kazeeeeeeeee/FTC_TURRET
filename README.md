@@ -8,10 +8,10 @@
 
 | 檔案名稱 | 檔案路徑 | 說明與角色 |
 |---|---|---|
-| [`TurretCalibrationOpMode.java`](TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretCalibrationOpMode.java) | `TeamCode/...` | **Step 3 校正工具**：無阻力手動旋轉炮臺，自動測量並計算 `TURRET_DEGREES_PER_TICK` 與 `TURRET_ENCODER_REVERSED` 極性。 |
-| [`AutoTurretShooter.java`](TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoTurretShooter.java) | `TeamCode/...` | **核心子系統 Class**：預填全場幾何參數、Dashboard `@Config` 可調參數、Pinpoint 速度低通濾波、剛體偏移運動學、SOTM 3 步疊代求解器、彈道物理與 LUT 計算、軟限位保護、FTC Dashboard Field Canvas 畫布輸出及 Limelight 3A 視覺對接 Hook。 |
-| [`BioBuzzTeleOp.java`](TeamCode/src/main/java/org/firstinspires/ftc/teamcode/BioBuzzTeleOp.java) | `TeamCode/...` | **競賽級 TeleOp 示範**：整合全向/麥克納姆輪驅動，支援一鍵切換 Sample 大小、目標籃筐、SOTM 補償，雙路 Telemetry 同步發送至遙控器與 Dashboard，並在 `isReadyToShoot()` 成立時自動觸發進彈與震動回饋。 |
-| [`PoseStorage.java`](TeamCode/src/main/java/org/firstinspires/ftc/teamcode/PoseStorage.java) | `TeamCode/...` | **座標傳遞 Class**：將 Autonomous 結束時的機器人座標無縫傳遞給 TeleOp。 |
+| [`TurretCalibrationOpMode.java`](src/main/java/org/firstinspires/ftc/teamcode/TurretCalibrationOpMode.java) | `TeamCode/...` | **Step 3 校正工具**：無阻力手動旋轉炮臺，自動測量並計算 `TURRET_DEGREES_PER_TICK` 與 `TURRET_ENCODER_REVERSED` 極性。 |
+| [`AutoTurretShooter.java`](src/main/java/org/firstinspires/ftc/teamcode/AutoTurretShooter.java) | `TeamCode/...` | **核心子系統 Class**：預填全場幾何參數、Dashboard `@Config` 可調參數、Pinpoint 速度低通濾波、剛體偏移運動學、SOTM 3 步疊代求解器、彈道物理與 LUT 計算、軟限位保護、FTC Dashboard Field Canvas 畫布輸出及 Limelight 3A 視覺對接 Hook。 |
+| [`BioBuzzTeleOp.java`](src/main/java/org/firstinspires/ftc/teamcode/BioBuzzTeleOp.java) | `TeamCode/...` | **競賽級 TeleOp 示範**：整合全向/麥克納姆輪驅動，支援一鍵切換 Sample 大小、目標籃筐、SOTM 補償，雙路 Telemetry 同步發送至遙控器與 Dashboard，並在 `isReadyToShoot()` 成立時自動觸發進彈與震動回饋。 |
+| [`PoseStorage.java`](src/main/java/org/firstinspires/ftc/teamcode/PoseStorage.java) | `TeamCode/...` | **座標傳遞 Class**：將 Autonomous 結束時的機器人座標無縫傳遞給 TeleOp。 |
 
 ---
 
@@ -137,7 +137,7 @@
 ```mermaid
 flowchart TD
     A["步驟 6.1：觀察 Dashboard Field View 畫布 (Field Canvas)"] -->|"藍圈=機器人, 紫線=瞄準光束, 紅圈=真實籃筐 (84,60), 綠圈=虛擬籃筐"| B["步驟 6.2：調校橫移提前量 (LATENCY_COMPENSATION_SEC)"]
-    B -->|"左右平移發射，修正綠色虛擬籃筐落後/超前"| C["步驟 6.3：調校前後距離阻力補償 (TOF_DRAG_SCALAR)"|
+    B -->|"左右平移發射，修正綠色虛擬籃筐落後/超前"| C["步驟 6.3：調校前後距離阻力補償 (TOF_DRAG_SCALAR)"]
     C -->|"進退發射，微調空氣阻力補償"| D["完成 SOTM 移動射擊調校"]
 ```
 
@@ -196,7 +196,6 @@ public class MyCompetitionTeleOp extends LinearOpMode {
                 turretShooter.actuateFeedServo(false);
             }
 
-            // 發送詳細 telemetry 至遙控器與 Dashboard
             turretShooter.sendTelemetry(telemetry);
         }
     }
