@@ -136,9 +136,9 @@
 
 ```mermaid
 flowchart TD
-    A["步驟 6.1：觀察 Dashboard Field View 畫布 (Field Canvas)"] -->|藍圈=機器人, 紫線=瞄準光束, 紅圈=真實籃筐 (84,60), 綠圈=虛擬籃筐| B["步驟 6.2：調校橫移提前量 (LATENCY_COMPENSATION_SEC)"]
-    B -->|左右平移發射，修正綠色虛擬籃筐落後/超前| C["步驟 6.3：調校前後距離阻力補償 (TOF_DRAG_SCALAR)"]
-    C -->|進退發射，微調空氣阻力補償| D["完成 SOTM 移動射擊調校"]
+    A["步驟 6.1：觀察 Dashboard Field View 畫布 (Field Canvas)"] -->|"藍圈=機器人, 紫線=瞄準光束, 紅圈=真實籃筐 (84,60), 綠圈=虛擬籃筐"| B["步驟 6.2：調校橫移提前量 (LATENCY_COMPENSATION_SEC)"]
+    B -->|"左右平移發射，修正綠色虛擬籃筐落後/超前"| C["步驟 6.3：調校前後距離阻力補償 (TOF_DRAG_SCALAR)"|
+    C -->|"進退發射，微調空氣阻力補償"| D["完成 SOTM 移動射擊調校"]
 ```
 
 ### 6.1 利用 Dashboard Field View 2D 場地畫布即時除錯
